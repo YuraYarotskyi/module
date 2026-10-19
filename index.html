@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        .modal_body {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showModal('My Modal', 'This is my modal content!')">
+        show modal
+    </button>
+    <button onclick="showWarningModal()">
+        show warning modal
+    </button>
+    <button onclick="showErrorModal()">
+        show error modal
+    </button>
+
+    <div id="my_modal" style="visibility: hidden; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(21, 54, 78, 0.4); position: fixed; backdrop-filter: blur(5px);">
+
+        <div class="modal_body">
+
+            <h2 id="modal_title">My modal is now visible!</h2>
+            <p id="modal_content">this is my modal</p>
+            <button onclick="closeModal()">
+            close modal
+            </button>
+        </div>
+    </div>
+    <script>
+        function showModal(title, content, color='black') {
+            document.getElementById('modal_title').innerText = title;
+            document.getElementById('modal_content').innerText = content;
+            document.getElementById('modal_title').style.color = color;
+            document.getElementById('modal_content').style.color = color;
+            document.getElementById('my_modal').style.visibility = 'visible';
+        }
+
+        function showWarningModal(){
+            showModal('Warning', 'This is a warning modal!', 'orange');
+        }
+
+        function showErrorModal(){
+            showModal('Error', 'This is an error modal!', 'red');
+        }
+
+        function closeModal() { 
+            document.getElementById('my_modal').style.visibility = 'hidden';
+        }
+    </script>
+</body>
+</html>
